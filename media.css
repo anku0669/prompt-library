@@ -59,17 +59,44 @@ body.has-video #search::placeholder{ color:rgba(255,255,255,.45); }
 .enter-hint{ margin-top:18px; font-size:12px; letter-spacing:.28em; text-transform:uppercase; opacity:.55; }
 @keyframes pulse{ 0%,100%{opacity:.6} 50%{opacity:1} }
 
-/* ── Music player (floating, bottom-left) ── */
+/* ── Music player (floating, bottom-left) ──
+   Hidden off-screen by default. Slides up smoothly only when the mouse
+   reaches the bottom-left corner (or hovers the bar itself). */
 .player{
   position:fixed; left:18px; bottom:18px; z-index:900;
-  display:none; align-items:center; gap:10px;
+  display:flex; align-items:center; gap:10px;
   padding:10px 14px; border-radius:16px;
   background:rgba(18,18,22,.62);
   border:1px solid rgba(255,255,255,.14);
   -webkit-backdrop-filter:saturate(160%) blur(18px); backdrop-filter:saturate(160%) blur(18px);
   box-shadow:0 8px 32px rgba(0,0,0,.4); color:#fff; max-width:calc(100vw - 36px);
+  transform:translateY(170%); opacity:0; pointer-events:none;
+  transition:transform .5s cubic-bezier(.22,1,.36,1), opacity .4s ease;
 }
-.player.show{ display:flex; }
+.player.peek{ transform:translateY(0); opacity:1; pointer-events:auto; }
+
+/* Subtle hint dot in the bottom-left so users know to hover there */
+.player-hint{
+  position:fixed; left:14px; bottom:14px; z-index:880;
+  width:10px; height:10px; border-radius:50%;
+  background:rgba(255,255,255,.5); box-shadow:0 0 0 6px rgba(255,255,255,.08);
+  display:none; pointer-events:none; animation:hintpulse 2s ease-in-out infinite;
+}
+.player-hint.show{ display:block; }
+@keyframes hintpulse{ 0%,100%{opacity:.35} 50%{opacity:.9} }
+
+/* ── Secret "gift" link ── */
+.gift{
+  display:inline-block; margin-top:14px; cursor:pointer;
+  font-size:13px; letter-spacing:.04em; padding:8px 16px; border-radius:999px;
+  border:1px dashed rgba(0,0,0,.25); background:rgba(0,0,0,.03);
+  transition:all .2s ease; user-select:none;
+}
+.gift:hover{ transform:translateY(-1px); border-color:rgba(0,0,0,.5); background:rgba(0,0,0,.06); }
+.gift.used{ cursor:default; border-style:solid; opacity:.7; }
+body.has-video .gift{ border-color:rgba(255,255,255,.3); background:rgba(255,255,255,.06); color:#fff; }
+body.has-video .gift:hover{ border-color:rgba(255,255,255,.6); background:rgba(255,255,255,.12); }
+
 .player-btn{
   background:none; border:none; color:#fff; cursor:pointer;
   font-size:15px; line-height:1; padding:6px; border-radius:10px; transition:background .15s;

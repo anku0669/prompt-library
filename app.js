@@ -1,9 +1,22 @@
 "use strict";
-/* ── Prompt Library client ────────────────────────────────────────────
+/* ── Prompt Library client ──
    All writes are gated server-side by Supabase Row-Level Security.
    This file never trusts the client for authorization.            */
 
-const CATEGORIES = ["Writing","Coding","Marketing","Image & Video","Business","Research","Productivity","Prompt Engineering","System Prompts","AI Jailbreak","DANs","Crescendo","Cognitive Dissonance","Manipulation Techniques","Other"];
+/* Public sections shown by default. */
+const PUBLIC_CATEGORIES = ["Writing","Coding","Marketing","Image & Video","Business","Research","Productivity","Other"];
+/* Hidden "gift" sections — only revealed after the secret is clicked. */
+const HIDDEN_CATEGORIES = ["Prompt Engineering","System Prompts","AI Jailbreak","DANs","Crescendo","Cognitive Dissonance","Manipulation Techniques"];
+let secretUnlocked = false;
+let CATEGORIES = PUBLIC_CATEGORIES.slice();
+function unlockSecret(){
+  if(secretUnlocked) return;
+  secretUnlocked = true;
+  CATEGORIES = [...PUBLIC_CATEGORIES, ...HIDDEN_CATEGORIES];
+  buildFilters(); buildCatSelect();
+  const g = $("gift"); if(g){ g.classList.add("used"); g.textContent = "\uD83C\uDF81 unlocked \u2014 7 secret sections added below"; }
+  toast("\uD83C\uDF81 Secret sections unlocked \u2014 enjoy");
+}
 
 /* Built-in starter prompts (read-only). They keep the library populated
    before/after Supabase is connected and double as usage examples. */
@@ -198,6 +211,7 @@ function wireUI(){
   $("tabSignup").onclick=()=>setAuthMode("signup");
   $("authSubmit").onclick=submitAuth;
   $("pSubmit").onclick=submitPrompt;
+  const gift=$("gift"); if(gift) gift.onclick=unlockSecret;
   document.querySelectorAll("[data-close]").forEach(b=>b.onclick=()=>b.closest(".overlay").classList.remove("open"));
   document.querySelectorAll(".overlay").forEach(o=>o.addEventListener("click",e=>{ if(e.target===o) o.classList.remove("open"); }));
   setAuthMode("login");
