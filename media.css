@@ -1,0 +1,89 @@
+/* ── Car-video background + click-to-enter + music player ── */
+
+/* When a video is set, body shows the video instead of the pastel mesh */
+body.has-video{ background:#050506 !important; }
+
+.bg-video{
+  position:fixed; inset:0; width:100%; height:100%;
+  object-fit:cover; z-index:-2; pointer-events:none;
+  opacity:0; transition:opacity .8s ease;
+}
+body.has-video .bg-video{ opacity:1; }
+
+.bg-scrim{
+  position:fixed; inset:0; z-index:-1; pointer-events:none; display:none;
+  background:
+    linear-gradient(to bottom, rgba(5,5,6,.55), rgba(5,5,6,.35) 40%, rgba(5,5,6,.7));
+}
+body.has-video .bg-scrim{ display:block; }
+
+/* Over the dark video, lift text/cards to white-on-glass */
+body.has-video{ color:#fff; }
+body.has-video .hero h1{ color:#fff; }
+body.has-video .hero p,
+body.has-video .eyebrow,
+body.has-video footer{ color:rgba(255,255,255,.8); }
+body.has-video footer a{ color:#fff; }
+body.has-video .brand{ color:#fff; }
+body.has-video .card{
+  background:rgba(20,20,24,.42);
+  border-color:rgba(255,255,255,.14);
+  -webkit-backdrop-filter:saturate(160%) blur(16px);
+  backdrop-filter:saturate(160%) blur(16px);
+}
+body.has-video .card h3{ color:#fff; }
+body.has-video .card pre{ background:rgba(0,0,0,.35); color:rgba(255,255,255,.9); border-color:rgba(255,255,255,.1); }
+body.has-video .card .foot span{ color:rgba(255,255,255,.7); }
+body.has-video .chip{ color:rgba(255,255,255,.85); border-color:rgba(255,255,255,.2); background:rgba(255,255,255,.06); }
+body.has-video .chip.active{ background:#fff; color:#111; }
+body.has-video #search{ background:rgba(20,20,24,.5); color:#fff; border-color:rgba(255,255,255,.18); }
+body.has-video #search::placeholder{ color:rgba(255,255,255,.45); }
+
+/* ── Click-to-enter splash ── */
+.enter{
+  position:fixed; inset:0; z-index:1000;
+  display:flex; align-items:center; justify-content:center;
+  background:rgba(3,3,5,.82);
+  -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+  cursor:pointer; transition:opacity .6s ease;
+}
+.enter.hide{ opacity:0; pointer-events:none; }
+.enter-inner{ text-align:center; color:#fff; user-select:none; }
+.enter-eyebrow{ font-size:13px; letter-spacing:.32em; text-transform:uppercase; opacity:.65; margin-bottom:14px; }
+.enter h1{
+  font-family:var(--display,"Bebas Neue",sans-serif);
+  font-size:clamp(48px,12vw,120px); line-height:.95; letter-spacing:.04em;
+  text-transform:lowercase; margin:0;
+  animation:pulse 2.4s ease-in-out infinite;
+}
+.enter-hint{ margin-top:18px; font-size:12px; letter-spacing:.28em; text-transform:uppercase; opacity:.55; }
+@keyframes pulse{ 0%,100%{opacity:.6} 50%{opacity:1} }
+
+/* ── Music player (floating, bottom-left) ── */
+.player{
+  position:fixed; left:18px; bottom:18px; z-index:900;
+  display:none; align-items:center; gap:10px;
+  padding:10px 14px; border-radius:16px;
+  background:rgba(18,18,22,.62);
+  border:1px solid rgba(255,255,255,.14);
+  -webkit-backdrop-filter:saturate(160%) blur(18px); backdrop-filter:saturate(160%) blur(18px);
+  box-shadow:0 8px 32px rgba(0,0,0,.4); color:#fff; max-width:calc(100vw - 36px);
+}
+.player.show{ display:flex; }
+.player-btn{
+  background:none; border:none; color:#fff; cursor:pointer;
+  font-size:15px; line-height:1; padding:6px; border-radius:10px; transition:background .15s;
+}
+.player-btn:hover{ background:rgba(255,255,255,.12); }
+.player-btn.play{ font-size:16px; }
+.player-meta{ min-width:120px; }
+.player-now{ font-size:13px; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:160px; }
+.player-track{ height:4px; border-radius:99px; background:rgba(255,255,255,.18); margin-top:6px; cursor:pointer; }
+.player-track-fill{ height:100%; width:0%; border-radius:99px; background:#fff; }
+.player-vol{ width:70px; accent-color:#fff; cursor:pointer; }
+
+@media (max-width:520px){
+  .player-vol{ display:none; }
+  .player-meta{ min-width:90px; }
+  .player-now{ max-width:110px; }
+}

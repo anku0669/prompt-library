@@ -6,8 +6,22 @@
   <title>PROMPT LIBRARY</title>
   <meta name="description" content="A shared, mission-grade library of AI prompts." />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="media.css" />
 </head>
 <body>
+  <!-- Fullscreen car-video background -->
+  <video id="bgVideo" class="bg-video" autoplay muted loop playsinline></video>
+  <div class="bg-scrim"></div>
+
+  <!-- Click-to-enter splash (also unlocks audio autoplay) -->
+  <div class="enter" id="enter">
+    <div class="enter-inner">
+      <div class="enter-eyebrow">we just pray for cars</div>
+      <h1>click to enter</h1>
+      <div class="enter-hint">sound on &#9835;</div>
+    </div>
+  </div>
+
   <nav>
     <div class="brand">PROMPT&nbsp;LIBRARY</div>
     <div class="navactions">
@@ -20,21 +34,21 @@
   <header class="hero">
     <div class="eyebrow">A MISSION-GRADE PROMPT ARCHIVE</div>
     <h1>Build Your Library Of Prompts</h1>
-    <p>Collect, organize, and share your best AI prompts across every discipline. Public to every visitor — owned and edited only by you.</p>
+    <p>Collect, organize, and share your best AI prompts across every discipline. Public to every visitor &mdash; owned and edited only by you.</p>
     <button class="btn" id="heroBtn">Start Contributing</button>
   </header>
 
   <main>
     <div class="bar">
       <div class="filters" id="filters"></div>
-      <input id="search" type="text" placeholder="Search prompts…" />
+      <input id="search" type="text" placeholder="Search prompts&hellip;" />
     </div>
     <div class="grid" id="grid"></div>
-    <div class="empty" id="empty" style="display:none">No prompts yet — be the first to launch one.</div>
+    <div class="empty" id="empty" style="display:none">No prompts yet &mdash; be the first to launch one.</div>
   </main>
 
   <footer>
-    Open prompt library · <a href="https://github.com/anku0669/prompt-library" target="_blank" rel="noopener">Source on GitHub</a><br/>
+    Open prompt library &middot; <a href="https://github.com/anku0669/prompt-library" target="_blank" rel="noopener">Source on GitHub</a><br/>
     Black-and-white by design. Secured server-side with Supabase Row-Level Security.
   </footer>
 
@@ -53,7 +67,7 @@
         <input id="dispName" type="text" placeholder="How you'll be credited" maxlength="40" />
       </div>
       <div class="field"><label>Email</label><input id="email" type="email" placeholder="you@domain.com" /></div>
-      <div class="field"><label>Password</label><input id="password" type="password" placeholder="••••••••" /></div>
+      <div class="field"><label>Password</label><input id="password" type="password" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" /></div>
       <div class="msg" id="authMsg"></div>
       <div class="row"><button class="btn" id="authSubmit">Log In</button></div>
     </div>
@@ -67,7 +81,7 @@
       <div class="sub">Share a prompt with the world.</div>
       <div class="field"><label>Title</label><input id="pTitle" type="text" maxlength="140" placeholder="What does this prompt do?" /></div>
       <div class="field"><label>Section</label><select id="pCat"></select></div>
-      <div class="field"><label>Prompt</label><textarea id="pBody" maxlength="8000" placeholder="Paste your prompt here…"></textarea></div>
+      <div class="field"><label>Prompt</label><textarea id="pBody" maxlength="8000" placeholder="Paste your prompt here&hellip;"></textarea></div>
       <div class="msg" id="pMsg"></div>
       <div class="row">
         <button class="btn ghostline" data-close>Cancel</button>
@@ -76,10 +90,24 @@
     </div>
   </div>
 
+  <!-- Music player -->
+  <div class="player" id="player">
+    <button class="player-btn" id="prevBtn" title="Previous">&#9198;</button>
+    <button class="player-btn play" id="playBtn" title="Play / Pause">&#9654;</button>
+    <button class="player-btn" id="nextBtn" title="Next">&#9197;</button>
+    <div class="player-meta">
+      <div class="player-now" id="nowPlaying">&mdash;</div>
+      <div class="player-track" id="trackBar"><div class="player-track-fill" id="trackFill"></div></div>
+    </div>
+    <input class="player-vol" id="volume" type="range" min="0" max="1" step="0.01" value="0.6" title="Volume" />
+  </div>
+  <audio id="audio"></audio>
+
   <div class="toast" id="toast"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
   <script src="config.js"></script>
   <script src="app.js"></script>
+  <script src="media.js"></script>
 </body>
 </html>
