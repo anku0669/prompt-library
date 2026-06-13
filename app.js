@@ -1,9 +1,9 @@
 "use strict";
-/* ── Prompt Library client ─────────────────────────────────────────
+/* ── Prompt Library client ────────────────────────────────────────────
    All writes are gated server-side by Supabase Row-Level Security.
    This file never trusts the client for authorization.            */
 
-const CATEGORIES = ["Writing","Coding","Marketing","Image & Video","Business","Research","Productivity","Other"];
+const CATEGORIES = ["Writing","Coding","Marketing","Image & Video","Business","Research","Productivity","Prompt Engineering","System Prompts","AI Jailbreak","DANs","Crescendo","Cognitive Dissonance","Manipulation Techniques","Other"];
 
 /* Built-in starter prompts (read-only). They keep the library populated
    before/after Supabase is connected and double as usage examples. */
