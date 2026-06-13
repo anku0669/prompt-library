@@ -152,8 +152,7 @@ async function submitAuth(){
       const dn=$("dispName").value.trim()||email.split("@")[0];
       const { error } = await sb.auth.signUp({ email, password:pw, options:{ data:{ display_name:dn } } });
       if(error) throw error;
-      msg.classList.add("ok"); msg.textContent="Account created. Check your email if confirmation is required, then log in.";
-      setAuthMode("login");
+      $("authModal").classList.remove("open"); toast("Account created \u2014 you're in");
     } else {
       const { error } = await sb.auth.signInWithPassword({ email, password:pw });
       if(error) throw error;
