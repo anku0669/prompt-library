@@ -7,12 +7,11 @@ window.SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXB
 
 // ── Background video + music ──
 // Drop your files into a /media folder in this repo (or paste direct URLs).
-// Recommended: small/compressed files so the page loads fast.
 window.MEDIA = {
   video: "media/car.mp4",            // <- your background car video (.mp4)
   tracks: [
     { title: "Black Fingernails", src: "media/black-fingernails.mp3" },
     { title: "Timeless",          src: "media/timeless.mp3" },
-    { title: "FE!N",              src: "media/fein.mp3" }
+    { title: "Kill Bill",         src: "media/kill-bill.mp3" }
   ]
 };
