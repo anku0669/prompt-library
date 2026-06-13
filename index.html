@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PROMPT LIBRARY</title>
+  <meta name="description" content="A shared, mission-grade library of AI prompts." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav>
+    <div class="brand">PROMPT&nbsp;LIBRARY</div>
+    <div class="navactions">
+      <span class="who" id="who"></span>
+      <button class="btn sm" id="newBtn" style="display:none">+ New Prompt</button>
+      <button class="btn sm ghostline" id="authBtn">Log In</button>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="eyebrow">A MISSION-GRADE PROMPT ARCHIVE</div>
+    <h1>Build Your Library Of Prompts</h1>
+    <p>Collect, organize, and share your best AI prompts across every discipline. Public to every visitor — owned and edited only by you.</p>
+    <button class="btn" id="heroBtn">Start Contributing</button>
+  </header>
+
+  <main>
+    <div class="bar">
+      <div class="filters" id="filters"></div>
+      <input id="search" type="text" placeholder="Search prompts…" />
+    </div>
+    <div class="grid" id="grid"></div>
+    <div class="empty" id="empty" style="display:none">No prompts yet — be the first to launch one.</div>
+  </main>
+
+  <footer>
+    Open prompt library · <a href="https://github.com/anku0669/prompt-library" target="_blank" rel="noopener">Source on GitHub</a><br/>
+    Black-and-white by design. Secured server-side with Supabase Row-Level Security.
+  </footer>
+
+  <!-- Auth modal -->
+  <div class="overlay" id="authModal">
+    <div class="modal">
+      <button class="x" data-close>&times;</button>
+      <div class="tabs">
+        <button class="chip active" id="tabLogin">Log In</button>
+        <button class="chip" id="tabSignup">Sign Up</button>
+      </div>
+      <h2 id="authTitle">Log In</h2>
+      <div class="sub">Logged-in users can post prompts. Browsing is open to everyone.</div>
+      <div class="field" id="nameField" style="display:none">
+        <label>Display Name</label>
+        <input id="dispName" type="text" placeholder="How you'll be credited" maxlength="40" />
+      </div>
+      <div class="field"><label>Email</label><input id="email" type="email" placeholder="you@domain.com" /></div>
+      <div class="field"><label>Password</label><input id="password" type="password" placeholder="••••••••" /></div>
+      <div class="msg" id="authMsg"></div>
+      <div class="row"><button class="btn" id="authSubmit">Log In</button></div>
+    </div>
+  </div>
+
+  <!-- Prompt editor modal -->
+  <div class="overlay" id="promptModal">
+    <div class="modal">
+      <button class="x" data-close>&times;</button>
+      <h2 id="pmTitle">New Prompt</h2>
+      <div class="sub">Share a prompt with the world.</div>
+      <div class="field"><label>Title</label><input id="pTitle" type="text" maxlength="140" placeholder="What does this prompt do?" /></div>
+      <div class="field"><label>Section</label><select id="pCat"></select></div>
+      <div class="field"><label>Prompt</label><textarea id="pBody" maxlength="8000" placeholder="Paste your prompt here…"></textarea></div>
+      <div class="msg" id="pMsg"></div>
+      <div class="row">
+        <button class="btn ghostline" data-close>Cancel</button>
+        <button class="btn" id="pSubmit">Publish</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

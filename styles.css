@@ -1,0 +1,106 @@
+/* ── SpaceX-inspired system: black canvas, white uppercase display ── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
+
+:root{
+  --night:#000; --night-soft:#0a0a0a; --white:#fff; --mute:#f0f0fa;
+  --hairline:#3a3a3f; --ink-mute:#5a5a5f; --pill:32px;
+  --disp:"Inter","Arial Narrow",Arial,Verdana,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--night); color:var(--white);
+  font-family:var(--disp); font-size:16px; line-height:1.5; letter-spacing:.32px;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--white)}
+.cap{text-transform:uppercase;font-weight:700;letter-spacing:1.17px}
+.eyebrow{text-transform:uppercase;font-size:12px;letter-spacing:.96px;color:var(--mute);line-height:2}
+
+/* Nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;align-items:center;
+  justify-content:space-between;padding:24px 32px;background:rgba(0,0,0,.55);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--hairline)}
+nav .brand{font-weight:800;letter-spacing:1.6px;text-transform:uppercase;font-size:18px}
+nav .navactions{display:flex;align-items:center;gap:16px}
+nav .who{font-size:12px;letter-spacing:.96px;color:var(--mute);text-transform:uppercase}
+
+/* Buttons — ghost pill is the only marketing CTA */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  background:transparent;color:var(--white);border:1px solid var(--white);
+  border-radius:var(--pill);padding:14px 22px;text-transform:uppercase;
+  font-weight:700;font-size:13px;letter-spacing:1.17px;cursor:pointer;
+  transition:background .18s,color .18s;font-family:var(--disp)}
+.btn:hover{background:var(--white);color:var(--night)}
+.btn.sm{padding:9px 16px;font-size:12px}
+.btn.ghostline{border-color:var(--hairline)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+
+/* Hero */
+header.hero{min-height:78vh;display:flex;flex-direction:column;justify-content:center;
+  align-items:center;text-align:center;padding:140px 24px 64px;
+  background:radial-gradient(120% 90% at 50% 0%,#0a0a0a 0%,#000 70%);border-bottom:1px solid var(--hairline)}
+header.hero h1{text-transform:uppercase;font-weight:800;line-height:.95;letter-spacing:1.6px;
+  font-size:clamp(40px,8vw,80px);max-width:14ch}
+header.hero p{margin-top:20px;max-width:46ch;color:var(--mute);line-height:1.7}
+header.hero .btn{margin-top:32px}
+
+/* Layout */
+main{max-width:1200px;margin:0 auto;padding:48px 24px 96px}
+.bar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:24px}
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--hairline);background:transparent;color:var(--mute);
+  border-radius:var(--pill);padding:8px 16px;font-size:12px;letter-spacing:.96px;
+  text-transform:uppercase;cursor:pointer;font-family:var(--disp)}
+.chip.active{background:var(--white);color:var(--night);border-color:var(--white)}
+#search{flex:1;min-width:200px;max-width:340px;background:var(--night-soft);color:#fff;
+  border:1px solid var(--hairline);border-radius:4px;padding:12px 16px;font-family:var(--disp)}
+#search::placeholder{color:var(--ink-mute)}
+
+/* Cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.card{background:var(--night-soft);border:1px solid var(--hairline);border-radius:8px;
+  padding:20px;display:flex;flex-direction:column;gap:12px}
+.card h3{text-transform:uppercase;font-weight:700;letter-spacing:.6px;font-size:18px;line-height:1.2}
+.card .meta{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.card .tag{font-size:11px;letter-spacing:.96px;text-transform:uppercase;color:var(--night);
+  background:var(--white);border-radius:var(--pill);padding:4px 12px;font-weight:700}
+.card pre{white-space:pre-wrap;word-break:break-word;font-family:var(--disp);color:var(--mute);
+  background:#000;border:1px solid var(--hairline);border-radius:4px;padding:14px;max-height:220px;
+  overflow:auto;line-height:1.6;font-size:14px}
+.card .foot{display:flex;justify-content:space-between;align-items:center;gap:8px;
+  font-size:12px;color:var(--ink-mute);letter-spacing:.4px}
+.card .actions{display:flex;gap:8px}
+.empty{text-align:center;color:var(--ink-mute);padding:64px 0;text-transform:uppercase;letter-spacing:1px}
+
+/* Modal */
+.overlay{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.8);backdrop-filter:blur(4px);
+  display:none;align-items:center;justify-content:center;padding:24px}
+.overlay.open{display:flex}
+.modal{position:relative;width:100%;max-width:520px;background:var(--night-soft);border:1px solid var(--hairline);
+  border-radius:8px;padding:32px;max-height:90vh;overflow:auto}
+.modal h2{text-transform:uppercase;letter-spacing:1.2px;font-weight:800;font-size:24px;margin-bottom:6px}
+.modal .sub{color:var(--ink-mute);font-size:13px;margin-bottom:24px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:11px;letter-spacing:.96px;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
+.field input,.field textarea,.field select{width:100%;background:#000;color:#fff;border:1px solid var(--hairline);
+  border-radius:4px;padding:12px 14px;font-family:var(--disp);font-size:15px}
+.field textarea{min-height:160px;resize:vertical;line-height:1.6}
+.modal .row{display:flex;gap:12px;margin-top:8px}
+.modal .row .btn{flex:1}
+.msg{font-size:13px;margin-top:8px;min-height:18px}
+.msg.err{color:#ff6b6b}.msg.ok{color:#7CFC9B}
+.tabs{display:flex;gap:8px;margin-bottom:20px}
+.tabs .chip{flex:1;text-align:center}
+.x{position:absolute;top:18px;right:22px;cursor:pointer;font-size:22px;color:var(--mute);background:none;border:none}
+
+footer{border-top:1px solid var(--hairline);padding:32px 24px;text-align:center;
+  color:var(--ink-mute);font-size:13px;letter-spacing:.4px}
+footer a{color:var(--mute);text-decoration:underline}
+
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#fff;color:#000;
+  padding:12px 22px;border-radius:var(--pill);font-size:12px;letter-spacing:1px;text-transform:uppercase;
+  font-weight:700;z-index:80;opacity:0;transition:opacity .25s;pointer-events:none}
+.toast.show{opacity:1}
+
+@media(max-width:600px){nav{padding:18px 18px}main{padding:32px 16px 80px}.modal{padding:24px}}
