@@ -96,7 +96,6 @@ body.has-video #search::placeholder{ color:rgba(255,255,255,.45); }
 .gift.used{ cursor:default; border-style:solid; opacity:.7; }
 body.has-video .gift{ border-color:rgba(255,255,255,.3); background:rgba(255,255,255,.06); color:#fff; }
 body.has-video .gift:hover{ border-color:rgba(255,255,255,.6); background:rgba(255,255,255,.12); }
-
 .player-btn{
   background:none; border:none; color:#fff; cursor:pointer;
   font-size:15px; line-height:1; padding:6px; border-radius:10px; transition:background .15s;
@@ -114,3 +113,30 @@ body.has-video .gift:hover{ border-color:rgba(255,255,255,.6); background:rgba(2
   .player-meta{ min-width:90px; }
   .player-now{ max-width:110px; }
 }
+
+/* ── Dark-mode dropdown / field readability fix ──
+   Native <select> option lists were rendering faint gray-on-light in dark
+   mode. Force a dark surface with white text everywhere it matters. */
+@media (prefers-color-scheme: dark){
+  .field select,
+  .field input,
+  .field textarea{
+    background:#26262b; color:#fff;
+    border-color:rgba(255,255,255,.18);
+  }
+  .field select option{ background:#1c1c20; color:#fff; }
+  .field input::placeholder,
+  .field textarea::placeholder{ color:rgba(255,255,255,.45); }
+}
+
+/* When the car-video dark skin is active, match the same readable dropdown */
+body.has-video .field select,
+body.has-video .field input,
+body.has-video .field textarea{
+  background:rgba(28,28,32,.92); color:#fff;
+  border-color:rgba(255,255,255,.18);
+}
+body.has-video .field select option{ background:#1c1c20; color:#fff; }
+
+/* Belt-and-suspenders: any select option stays readable on dark surfaces */
+.modal select option{ background:#1c1c20; color:#fff; }

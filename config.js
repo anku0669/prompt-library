@@ -12,6 +12,7 @@ window.MEDIA = {
   tracks: [
     { title: "Black Fingernails", src: "media/black-fingernails.mp3" },
     { title: "Timeless",          src: "media/timeless.mp3" },
+    { title: "FE!N",              src: "media/fein.mp3" },
     { title: "Kill Bill",         src: "media/kill-bill.mp3" }
   ]
 };
