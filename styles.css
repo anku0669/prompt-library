@@ -1,106 +1,114 @@
-/* ── SpaceX-inspired system: black canvas, white uppercase display ── */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
+/* ── Nike-inspired system: white canvas, soft-cloud surfaces, ink pills ── */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;700;800&display=swap');
 
 :root{
-  --night:#000; --night-soft:#0a0a0a; --white:#fff; --mute:#f0f0fa;
-  --hairline:#3a3a3f; --ink-mute:#5a5a5f; --pill:32px;
-  --disp:"Inter","Arial Narrow",Arial,Verdana,sans-serif;
+  --ink:#111111; --canvas:#ffffff; --cloud:#f5f5f5;
+  --charcoal:#39393b; --mute:#707072; --stone:#9e9ea0;
+  --hairline:#cacacb; --hairline-soft:#e5e5e5; --sale:#d30005;
+  --ui:"Inter","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --display:"Bebas Neue","Inter",Arial,sans-serif;
+  --pill:9999px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
-  background:var(--night); color:var(--white);
-  font-family:var(--disp); font-size:16px; line-height:1.5; letter-spacing:.32px;
+  background:var(--canvas); color:var(--ink);
+  font-family:var(--ui); font-size:16px; line-height:1.5; letter-spacing:0;
   -webkit-font-smoothing:antialiased;
 }
-a{color:var(--white)}
-.cap{text-transform:uppercase;font-weight:700;letter-spacing:1.17px}
-.eyebrow{text-transform:uppercase;font-size:12px;letter-spacing:.96px;color:var(--mute);line-height:2}
+a{color:var(--ink)}
+.eyebrow{text-transform:uppercase;font-size:12px;font-weight:500;letter-spacing:.5px;color:var(--mute);line-height:1.75}
 
 /* Nav */
-nav{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;align-items:center;
-  justify-content:space-between;padding:24px 32px;background:rgba(0,0,0,.55);
-  backdrop-filter:blur(8px);border-bottom:1px solid var(--hairline)}
-nav .brand{font-weight:800;letter-spacing:1.6px;text-transform:uppercase;font-size:18px}
-nav .navactions{display:flex;align-items:center;gap:16px}
-nav .who{font-size:12px;letter-spacing:.96px;color:var(--mute);text-transform:uppercase}
+nav{position:sticky;top:0;z-index:40;display:flex;align-items:center;
+  justify-content:space-between;padding:0 24px;height:56px;background:var(--canvas);
+  box-shadow:inset 0 -1px 0 var(--hairline)}
+nav .brand{font-family:var(--display);font-size:26px;letter-spacing:.5px;text-transform:uppercase;color:var(--ink)}
+nav .navactions{display:flex;align-items:center;gap:12px}
+nav .who{font-size:13px;font-weight:500;color:var(--mute)}
 
-/* Buttons — ghost pill is the only marketing CTA */
+/* Buttons — pill is the entire button vocabulary */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
-  background:transparent;color:var(--white);border:1px solid var(--white);
-  border-radius:var(--pill);padding:14px 22px;text-transform:uppercase;
-  font-weight:700;font-size:13px;letter-spacing:1.17px;cursor:pointer;
-  transition:background .18s,color .18s;font-family:var(--disp)}
-.btn:hover{background:var(--white);color:var(--night)}
-.btn.sm{padding:9px 16px;font-size:12px}
-.btn.ghostline{border-color:var(--hairline)}
+  background:var(--ink);color:var(--canvas);border:1px solid var(--ink);
+  border-radius:var(--pill);padding:14px 28px;font-weight:500;font-size:16px;
+  cursor:pointer;font-family:var(--ui);line-height:1;transition:transform .1s,opacity .15s}
+.btn:hover{opacity:.85}
+.btn:active{transform:scale(.97)}
+.btn.sm{padding:9px 18px;font-size:14px}
+/* secondary = soft-cloud pill on light surfaces */
+.btn.ghostline{background:var(--cloud);color:var(--ink);border-color:var(--cloud)}
+.btn.ghostline:hover{background:#ececec;opacity:1}
 .btn:disabled{opacity:.4;cursor:not-allowed}
 
-/* Hero */
-header.hero{min-height:78vh;display:flex;flex-direction:column;justify-content:center;
-  align-items:center;text-align:center;padding:140px 24px 64px;
-  background:radial-gradient(120% 90% at 50% 0%,#0a0a0a 0%,#000 70%);border-bottom:1px solid var(--hairline)}
-header.hero h1{text-transform:uppercase;font-weight:800;line-height:.95;letter-spacing:1.6px;
-  font-size:clamp(40px,8vw,80px);max-width:14ch}
-header.hero p{margin-top:20px;max-width:46ch;color:var(--mute);line-height:1.7}
-header.hero .btn{margin-top:32px}
+/* Hero — editorial billboard, headline burned over soft-cloud */
+header.hero{display:flex;flex-direction:column;justify-content:flex-end;
+  min-height:62vh;padding:120px 24px 56px;background:var(--cloud);
+  box-shadow:inset 0 -1px 0 var(--hairline)}
+header.hero .eyebrow{margin-bottom:12px}
+header.hero h1{font-family:var(--display);text-transform:uppercase;font-weight:400;
+  line-height:.9;letter-spacing:0;font-size:clamp(48px,11vw,108px);color:var(--ink);max-width:16ch}
+header.hero p{margin-top:18px;max-width:52ch;color:var(--charcoal);line-height:1.5;font-size:16px}
+header.hero .btn{margin-top:28px;align-self:flex-start}
 
 /* Layout */
-main{max-width:1200px;margin:0 auto;padding:48px 24px 96px}
-.bar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:24px}
+main{max-width:1440px;margin:0 auto;padding:48px 24px 80px}
+.bar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:32px}
 .filters{display:flex;flex-wrap:wrap;gap:8px}
-.chip{border:1px solid var(--hairline);background:transparent;color:var(--mute);
-  border-radius:var(--pill);padding:8px 16px;font-size:12px;letter-spacing:.96px;
-  text-transform:uppercase;cursor:pointer;font-family:var(--disp)}
-.chip.active{background:var(--white);color:var(--night);border-color:var(--white)}
-#search{flex:1;min-width:200px;max-width:340px;background:var(--night-soft);color:#fff;
-  border:1px solid var(--hairline);border-radius:4px;padding:12px 16px;font-family:var(--disp)}
-#search::placeholder{color:var(--ink-mute)}
+.chip{border:1px solid var(--hairline);background:var(--canvas);color:var(--ink);
+  border-radius:var(--pill);padding:9px 18px;font-size:14px;font-weight:500;
+  cursor:pointer;font-family:var(--ui);line-height:1;transition:.12s}
+.chip:hover{border-color:var(--ink)}
+.chip.active{background:var(--ink);color:var(--canvas);border-color:var(--ink)}
+#search{flex:1;min-width:200px;max-width:340px;background:var(--cloud);color:var(--ink);
+  border:1px solid transparent;border-radius:24px;padding:11px 18px;font-family:var(--ui);font-size:15px;height:42px}
+#search::placeholder{color:var(--mute)}
+#search:focus{outline:none;background:var(--canvas);border-color:var(--ink)}
 
-/* Cards */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
-.card{background:var(--night-soft);border:1px solid var(--hairline);border-radius:8px;
+/* Cards — flat, zero radius, hairline framed; body sits on the cloud "studio" */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:8px}
+.card{background:var(--canvas);border:1px solid var(--hairline-soft);border-radius:0;
   padding:20px;display:flex;flex-direction:column;gap:12px}
-.card h3{text-transform:uppercase;font-weight:700;letter-spacing:.6px;font-size:18px;line-height:1.2}
-.card .meta{display:flex;justify-content:space-between;align-items:center;gap:8px}
-.card .tag{font-size:11px;letter-spacing:.96px;text-transform:uppercase;color:var(--night);
-  background:var(--white);border-radius:var(--pill);padding:4px 12px;font-weight:700}
-.card pre{white-space:pre-wrap;word-break:break-word;font-family:var(--disp);color:var(--mute);
-  background:#000;border:1px solid var(--hairline);border-radius:4px;padding:14px;max-height:220px;
+.card h3{font-weight:700;font-size:18px;line-height:1.2;color:var(--ink)}
+.card .meta{display:flex;justify-content:flex-start;align-items:center;gap:8px;flex-wrap:wrap}
+.card .tag{font-size:12px;font-weight:500;color:var(--canvas);
+  background:var(--ink);border-radius:var(--pill);padding:5px 14px;line-height:1}
+.card pre{white-space:pre-wrap;word-break:break-word;font-family:var(--ui);color:var(--charcoal);
+  background:var(--cloud);border:0;border-radius:0;padding:16px;max-height:220px;
   overflow:auto;line-height:1.6;font-size:14px}
 .card .foot{display:flex;justify-content:space-between;align-items:center;gap:8px;
-  font-size:12px;color:var(--ink-mute);letter-spacing:.4px}
+  font-size:13px;color:var(--mute);font-weight:500}
 .card .actions{display:flex;gap:8px}
-.empty{text-align:center;color:var(--ink-mute);padding:64px 0;text-transform:uppercase;letter-spacing:1px}
+.empty{text-align:center;color:var(--mute);padding:64px 0;font-size:16px;font-weight:500}
 
 /* Modal */
-.overlay{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.8);backdrop-filter:blur(4px);
+.overlay{position:fixed;inset:0;z-index:60;background:rgba(17,17,17,.5);
   display:none;align-items:center;justify-content:center;padding:24px}
 .overlay.open{display:flex}
-.modal{position:relative;width:100%;max-width:520px;background:var(--night-soft);border:1px solid var(--hairline);
-  border-radius:8px;padding:32px;max-height:90vh;overflow:auto}
-.modal h2{text-transform:uppercase;letter-spacing:1.2px;font-weight:800;font-size:24px;margin-bottom:6px}
-.modal .sub{color:var(--ink-mute);font-size:13px;margin-bottom:24px}
+.modal{position:relative;width:100%;max-width:520px;background:var(--canvas);border:1px solid var(--hairline);
+  border-radius:0;padding:32px;max-height:90vh;overflow:auto}
+.modal h2{font-family:var(--display);text-transform:uppercase;font-weight:400;letter-spacing:.5px;font-size:34px;line-height:.95;margin-bottom:6px}
+.modal .sub{color:var(--mute);font-size:14px;margin-bottom:24px}
 .field{margin-bottom:16px}
-.field label{display:block;font-size:11px;letter-spacing:.96px;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
-.field input,.field textarea,.field select{width:100%;background:#000;color:#fff;border:1px solid var(--hairline);
-  border-radius:4px;padding:12px 14px;font-family:var(--disp);font-size:15px}
+.field label{display:block;font-size:13px;font-weight:500;color:var(--ink);margin-bottom:8px}
+.field input,.field textarea,.field select{width:100%;background:var(--cloud);color:var(--ink);
+  border:1px solid transparent;border-radius:8px;padding:12px 14px;font-family:var(--ui);font-size:15px}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;background:var(--canvas);border-color:var(--ink)}
 .field textarea{min-height:160px;resize:vertical;line-height:1.6}
 .modal .row{display:flex;gap:12px;margin-top:8px}
 .modal .row .btn{flex:1}
-.msg{font-size:13px;margin-top:8px;min-height:18px}
-.msg.err{color:#ff6b6b}.msg.ok{color:#7CFC9B}
+.msg{font-size:13px;margin-top:8px;min-height:18px;font-weight:500}
+.msg.err{color:var(--sale)}.msg.ok{color:#007d48}
 .tabs{display:flex;gap:8px;margin-bottom:20px}
 .tabs .chip{flex:1;text-align:center}
-.x{position:absolute;top:18px;right:22px;cursor:pointer;font-size:22px;color:var(--mute);background:none;border:none}
+.x{position:absolute;top:18px;right:22px;cursor:pointer;font-size:24px;color:var(--ink);background:none;border:none;line-height:1}
 
-footer{border-top:1px solid var(--hairline);padding:32px 24px;text-align:center;
-  color:var(--ink-mute);font-size:13px;letter-spacing:.4px}
-footer a{color:var(--mute);text-decoration:underline}
+footer{background:var(--canvas);box-shadow:inset 0 1px 0 var(--hairline);padding:32px 24px;text-align:center;
+  color:var(--mute);font-size:13px;font-weight:500}
+footer a{color:var(--ink);text-decoration:underline}
 
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#fff;color:#000;
-  padding:12px 22px;border-radius:var(--pill);font-size:12px;letter-spacing:1px;text-transform:uppercase;
-  font-weight:700;z-index:80;opacity:0;transition:opacity .25s;pointer-events:none}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--canvas);
+  padding:13px 26px;border-radius:var(--pill);font-size:14px;font-weight:500;
+  z-index:80;opacity:0;transition:opacity .25s;pointer-events:none}
 .toast.show{opacity:1}
 
-@media(max-width:600px){nav{padding:18px 18px}main{padding:32px 16px 80px}.modal{padding:24px}}
+@media(max-width:600px){nav{padding:0 16px}main{padding:32px 16px 72px}header.hero{padding:100px 16px 40px}.modal{padding:24px}}

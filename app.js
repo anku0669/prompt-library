@@ -89,7 +89,7 @@ function cardEl(p){
   const mine = !sample && user && user.id === p.user_id;
   const card=document.createElement("div"); card.className="card";
   card.innerHTML = `
-    <div class="meta"><span class="tag">${esc(p.category)}</span>${sample?'<span class="tag" style="background:transparent;color:#f0f0fa;border:1px solid #3a3a3f">Sample</span>':''}</div>
+    <div class="meta"><span class="tag">${esc(p.category)}</span>${sample?'<span class="tag" style="background:#fff;color:#111;border:1px solid #cacacb">Sample</span>':''}</div>
     <h3>${esc(p.title)}</h3>
     <pre>${esc(p.body)}</pre>
     <div class="foot">
