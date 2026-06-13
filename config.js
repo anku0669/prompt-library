@@ -1,8 +1,6 @@
-// ── Supabase connection ────────────────────────────────────────────
-// 1. Create a free project at https://supabase.com
-// 2. Project Settings → API → copy "Project URL" and the "anon public" key
-// 3. Paste them below, commit, and your site is live.
+// ── Supabase connection ─────────────────────────────────────────
+// Connected to project: anku0669's Project (ref: jglgylclmeuvwsscvnbn)
 // NOTE: The anon key is SAFE to expose publicly. All security is enforced
 // server-side by Row-Level Security policies (see schema.sql).
-window.SUPABASE_URL  = "YOUR_PROJECT_URL_HERE";       // e.g. https://abcd1234.supabase.co
-window.SUPABASE_ANON_KEY = "YOUR_ANON_PUBLIC_KEY_HERE";
+window.SUPABASE_URL = "https://jglgylclmeuvwsscvnbn.supabase.co";
+window.SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGd5bGNsbWV1dndzc2N2bmJuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEzMjc2MjksImV4cCI6MjA5NjkwMzYyOX0.k8RO6DfiO-5gRhianA-AvKAif-rXgpuHOiByTvpr0lo";
